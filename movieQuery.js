@@ -7,27 +7,62 @@ var movieList = [
   { title: "The Matrix Reloaded”, year: “2003", length: 138, rating: "7.2", genre: "sci-fi" }
 ];
 
+//Task 1
 function getMovieTitle( index ){
-  //add code
+  return movieList[index].title;
 }
 
+console.log(getMovieTitle(0));
 console.log(getMovieTitle(3));
 
+//Task 2
+movieList.push({title:"Annabell", year:"2015", length: 140, rating:"7.5", genre:"horror"});
+
+
+//Task 3
 function addMovie( movie ){
   //add code
+  movieList.push(movie);
+  return movieList;
 }
 
-var newMovie = {};
+var newMovie = {title:"Conjouring", year:"2013", length: 130, rating:"8.1", genre:"horror"};
 console.log(addMovie(newMovie));
+
+
+//Task 4
+
+function compare(a,b) {
+  if (a.rating < b.rating)
+    return 1;
+  if (a.rating > b.rating)
+    return -1;
+  return 0;
+}
+
 
 function movieByRating(){
   //add code
+  movieList.sort(compare);
+  return movieList;
 }
 
 console.log(movieByRating());
 
+
+//Task 5
 function findByTitle( title ){
-  //add code
+  SearchedArray = [];
+  
+  var regex = new RegExp(title, 'i');
+
+  for (var i = movieList.length - 1; i >= 0; i--) {
+    if(regex.test(movieList[i].title))
+    {
+      SearchedArray.push(movieList[i]);
+    }
+  }
+  return SearchedArray;
 }
 
 console.log(findByTitle("matrix"));
